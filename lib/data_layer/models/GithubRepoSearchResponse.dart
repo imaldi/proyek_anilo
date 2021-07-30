@@ -197,7 +197,7 @@ class GithubReposModel {
   int? openIssues;
   int? watchers;
   DefaultBranch? defaultBranch;
-  int? score;
+  double? score;
 
   GithubReposModel copyWith({
     int? id,
@@ -273,7 +273,7 @@ class GithubReposModel {
     int? openIssues,
     int? watchers,
     DefaultBranch? defaultBranch,
-    int? score,
+    double? score,
   }) =>
       GithubReposModel(
         id: id ?? this.id,

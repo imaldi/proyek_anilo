@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:proyek_anilo/data_layer/consts/Sizes.dart';
 import 'package:proyek_anilo/logic_layer/GithubRepoCubit.dart';
+import 'package:proyek_anilo/presentation_layer/widgets/MyContainer.dart';
 import 'package:proyek_anilo/presentation_layer/widgets/GithubRepoList.dart';
 import 'package:proyek_anilo/presentation_layer/widgets/MyTextField.dart';
 
@@ -29,16 +31,27 @@ class _GithubRepoScreenState extends State<GithubRepoScreen> {
       TextEditingController controller = TextEditingController(text: "");
       return Stack(
         children: [
-          MyTextField(
-            controller: TextEditingController(text: ""),
-            decoration: InputDecoration(
-              hintText: "Search",
-              prefix: Icon(Icons.search),
+          MyContainer(
+            margin: EdgeInsets.symmetric(horizontal: size_huge, vertical: size_small),
+            backgroundColor: Colors.white,
+            // color: Colors.grey,
+            // margin: EdgeInsets.all(size_medium),
+            padding: EdgeInsets.all(size_medium),
+            child: MyTextField(
+              controller: TextEditingController(text: ""),
+              decoration: InputDecoration(
+                hintText: "Search",
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.blue,
+                ),
+                // suffixIcon: Icon(Icons.)
+              ),
+              enabled: true,
+              onChanged: (v) {
+                c.read<GithubRepoCubit>().searchRepo(v);
+              },
             ),
-            enabled: true,
-            onChanged: (v) {
-              c.read<GithubRepoCubit>().searchRepo(v);
-            },
           ),
           Container(padding: EdgeInsets.only(top: size_huge * 2), child: githubRepoList(c, repos)),
         ],
