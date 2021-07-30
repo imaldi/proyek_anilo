@@ -45,6 +45,8 @@ class _GithubRepoScreenState extends State<GithubRepoScreen> {
                   Icons.search,
                   color: Colors.blue,
                 ),
+                // suffix: Image(image: AssetImage('assets/icons/close_button.png')),
+                // suffix: Image.asset("/"),
                 // suffixIcon: Icon(Icons.)
               ),
               enabled: true,
